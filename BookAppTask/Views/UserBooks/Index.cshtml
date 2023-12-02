@@ -1,0 +1,333 @@
+﻿@model IEnumerable<BookAppTask.Models.Book>
+
+@{
+    ViewData["Title"] = "Welcome to our book App";
+}
+
+ <div class="bg-img">
+            
+ </div>
+
+      <div class="contains-buttons">
+        <div class="row mb-5" style="justify-content: center; font-weight: bold;">
+            <h5 class="text-center text-white">What Interest You?</h5>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                      
+                            <h5 class="text-center mb-4 text-white">Fiction Books</h5>
+                       
+
+                        <div class="j-h">
+                            <div class="button-y">
+                               <span class="mr-5"><a href=""><button class="btn btn-primary">Drama</button></a></span> 
+                               <span class=""><a href=""><button class="btn btn-primary">Horror</button></a></span> 
+                            </div> <br>
+                            <div class="button-y">
+                                <span class="mr-5"><a href=""><button class="btn btn-primary">Drama</button></a></span> 
+                               <span class=""><a href=""><button class="btn btn-primary">Horror</button></a></span> 
+                            </div> 
+                        </div>
+                                           
+                    </div>
+
+                    <div class="col-md-6">
+                        
+                            <h5 class="text-center mb-4 text-white">Non-Fiction Books</h5>
+                       
+
+                            <div class="j-h">
+                                <div class="button-y">
+                                   <span class="mr-5"><a href=""><button class="btn btn-success">Drama</button></a></span> 
+                                   <span class=""><a href=""><button class="btn btn-primary">Horror</button></a></span> 
+                                </div> <br>
+                                <div class="button-y">
+                                    <span class="mr-5"><a href=""><button class="btn btn-primary">Drama</button></a></span> 
+                                   <span class=""><a href=""><button class="btn btn-success">Horror</button></a></span> 
+                                </div> 
+                            </div>
+                                           
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <h5 class="text-center mb-4 text-white">CD Genres</h5>
+                <div class="row">
+                    <div class="col-md-6">                                             
+
+                        <div class="j-h">
+                            <div class="button-y">
+                               <span class="mr-5"><a href=""><button class="btn btn-success">Drama</button></a></span> 
+                               <span class=""><a href=""><button class="btn btn-primary">Horror</button></a></span> 
+                            </div> <br>
+                            <div class="button-y">
+                                <span class="mr-5"><a href=""><button class="btn btn-primary">Drama</button></a></span> 
+                               <span class=""><a href=""><button class="btn btn-success">Horror</button></a></span> 
+                            </div> 
+                        </div>
+                                           
+                    </div>
+
+                    <div class="col-md-6">
+                        
+                        <div class="j-h">
+                            <div class="button-y">
+                               <span class="mr-5"><a href=""><button class="btn btn-success">Drama</button></a></span> 
+                               <span class=""><a href=""><button class="btn btn-primary">Horror</button></a></span> 
+                               
+                            </div> <br>
+                            <div class="button-y">
+                                <span class="mr-5"><a href=""><button class="btn btn-primary">Drama</button></a></span> 
+                               <span class=""><a href=""><button class="btn btn-success">Horror</button></a></span> 
+                            </div> 
+                        </div>
+                                           
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+      <div class="m-4">
+ @*    <a asp-controller="UserBooks" asp-action="details">details Page</a>
+    <a asp-controller="Category" asp-action="Index">Categories</a>
+    <a asp-controller="Genre" asp-action="Index">Genre</a>
+    <a asp-controller="Book" asp-action="Index">Welcome page</a>
+    <a asp-controller="Review" asp-action="Index">Review</a> *@
+
+       <div class="row mt-5">
+           <span class="mr-4"><h5>New Releases</h5></span><span class="ml-4 mr-4">Books: 20</span> <span >CDs: 25</span>
+       </div>
+
+       <div class="row mt-3">
+           @foreach(var item in Model)
+        {
+            <div class="col-md-2 text-center mb-3 image-20">
+
+                 <a asp-action="Details" asp-route-id="@item.Id">
+
+                <img src="@Html.DisplayFor(modelItem => item.ImageLink)" height="250" width="180" alt="book-image">
+                <h6 class="mt-2">@Html.DisplayFor(modelItem => item.Title)</h6>
+                <p class="author-fiction">@Html.DisplayFor(modelItem => item.Category.Name)</p>
+                <p class="author">@Html.DisplayFor(modelItem => item.Author)</p>
+                <div class="author">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+                <p class="Available">Available</p>
+
+                </a>
+
+            </div>
+
+        }   
+        
+       </div>
+
+       <div class="row mt-5">
+           <span class="mr-4"><h5>Most popular</h5></span> <span class="ml-4 mr-4">Books: 20</span> <span >CDs: 20</span>
+       </div>
+       <div class="row mt-3">
+
+        @foreach (var most in Model.Skip(6).Take(6))
+        {
+            <div class="col-md-2 text-center mb-3 image-20">
+
+                <a asp-action="Details" asp-route-id="@most.Id">
+
+                    <img src="@Html.DisplayFor(modelItem => most.ImageLink)" height="250" width="180" alt="book-image">
+                    <h6 class="mt-2">@Html.DisplayFor(modelItem => most.Title)</h6>
+                    <p class="author-fiction">@Html.DisplayFor(modelItem => most.Category.Name)</p>
+                    <p class="author">@Html.DisplayFor(modelItem => most.Author)</p>
+                    <div class="author">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                    <p class="Available">Available</p>
+
+                </a>
+
+            </div>
+
+        }
+
+
+      @*   <div class="col-md-2 text-center mb-3">
+               <img src="~/images/book2.jpeg" alt="book1-image">
+               <h6 class="mt-2">Title of book</h6>
+               <p class="author-fiction">Fiction</p>
+               <p class="author">Author</p>
+               <div class="author">
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star"></span>
+                   <span class="fa fa-star"></span>
+               </div>
+               <p class="Available">Available</p>
+           </div>
+
+           <div class="col-md-2 text-center">
+               <img src="~/images/book3.jpeg" alt="book1-image">
+               <h6 class="mt-2">Title of book</h6>
+               <p class="author-fiction">Fiction</p>
+               <p class="author">Author</p>
+               <div class="author">
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star"></span>
+                   <span class="fa fa-star"></span>
+               </div>
+               <p class="Available">Available</p>
+           </div>
+
+           <div class="col-md-2 text-center">
+               <img src="~/images/book4.jpeg" alt="book1-image">
+               <h6 class="mt-2">Title of book</h6>
+               <p class="author-fiction">Fiction</p>
+               <p class="author">Author</p>
+               <div class="author">
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star"></span>
+                   <span class="fa fa-star"></span>
+               </div>
+               <p class="Available">Available</p>
+           </div>
+
+           <div class="col-md-2 text-center">
+               <img src="~/images/book5.jpeg" alt="book1-image">
+               <h6 class="mt-2">Title of book</h6>
+               <p class="author-fiction">Fiction</p>
+               <p class="author">Author</p>
+               <div class="author">
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star"></span>
+                   <span class="fa fa-star"></span>
+               </div>
+               <p class="Available">Available</p>
+           </div>
+
+           <div class="col-md-2 text-center">
+               <img src="~/images/book1.jpeg" alt="book1-image">
+               <h6 class="mt-2">Title of book</h6>
+               <p class="author-fiction">Fiction</p>
+               <p class="author">Author</p>
+               <div class="author">
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star"></span>
+                   <span class="fa fa-star"></span>
+               </div>
+               <p class="Available">Available</p>
+           </div>
+
+           <div class="col-md-2 text-center">
+               <img src="~/images/book1.jpeg" alt="book1-image">
+               <h6 class="mt-2">Title of book</h6>
+               <p class="author-fiction">Fiction</p>
+               <p class="author">Author</p>
+               <div class="author">
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star"></span>
+                   <span class="fa fa-star"></span>
+               </div>
+               <p class="Available">Available</p>
+           </div>
+
+           <div class="col-md-2 text-center">
+               <img src="~/images/book2.jpeg" alt="book1-image">
+               <h6 class="mt-2">Title of book</h6>
+               <p class="author-fiction">Fiction</p>
+               <p class="author">Author</p>
+               <div class="author">
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star"></span>
+                   <span class="fa fa-star"></span>
+               </div>
+               <p class="Available">Available</p>
+           </div>
+
+           <div class="col-md-2 text-center">
+               <img src="~/images/book3.jpeg" alt="book1-image">
+               <h6 class="mt-2">Title of book</h6>
+               <p class="author-fiction">Fiction</p>
+               <p class="author">Author</p>
+               <div class="author">
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star"></span>
+                   <span class="fa fa-star"></span>
+               </div>
+               <p class="Available">Available</p>
+           </div>
+
+           <div class="col-md-2 text-center">
+               <img src="~/images/book4.jpeg" alt="book1-image">
+               <h6 class="mt-2">Title of book</h6>
+               <p class="author-fiction">Fiction</p>
+               <p class="author">Author</p>
+               <div class="author">
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star"></span>
+                   <span class="fa fa-star"></span>
+               </div>
+               <p class="Available">Available</p>
+           </div>
+
+           <div class="col-md-2 text-center">
+               <img src="~/images/book5.jpeg" alt="book1-image">
+               <h6 class="mt-2">Title of book</h6>
+               <p class="author-fiction">Fiction</p>
+               <p class="author">Author</p>
+               <div class="author">
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star"></span>
+                   <span class="fa fa-star"></span>
+               </div>
+               <p class="Available">Available</p>
+           </div>
+
+           <div class="col-md-2 text-center">
+               <img src="~/images/book1.jpeg" alt="book1-image">
+               <h6 class="mt-2">Title of book</h6>
+               <p class="author-fiction">Fiction</p>
+               <p class="author">Author</p>
+               <div class="author">
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star checked"></span>
+                   <span class="fa fa-star"></span>
+                   <span class="fa fa-star"></span>
+               </div>
+               <p class="Available">Available</p>
+           </div>
+ *@
+           
+       </div>   
+   </div>

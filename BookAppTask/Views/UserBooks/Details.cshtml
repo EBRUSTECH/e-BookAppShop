@@ -1,0 +1,134 @@
+﻿@model BookAppTask.Models.Book 
+
+
+@{
+    ViewData["Title"] = "Book - details";
+}
+
+<div class="container mb-5 mt-5">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <button class="button-z">New Release</button>
+            <button class="button-z button2">Most Popular</button>
+            <button class="button-z button3">Browse Genres</button>
+            <button class="button-z button4">Advance Search</button>
+            <a asp-controller="UserBooks" asp-action="Index"><button class="button-z button5">Black</button></a>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row mt-5">
+        <span class="mr-2"><p>Showing</p></span> <span class="mr-2"><p style="font-weight: bold;">1</p></span> <span><p>result for</p></span> <span class="ml-2 mr-2"><h6 style="font-weight:bold;">@Html.DisplayFor(model => model.Title)</h6></span>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mt-3">
+            <img src="@Html.DisplayFor(model => model.ImageLink)" alt="detail-image" style="height: 350px;">
+        </div>
+
+        <div class="col-md-8 mb-5">
+            <p style="font-weight:bold;">@Html.DisplayFor(model => model.Title)</p>
+            <div class="row mt-2 ml-1">
+                <span class="mr-2"><p>Available Copies:</p></span> <span class="mr-2"><p style="font-weight:bold;">@Html.DisplayFor(model => model.AvailableCopies),</p></span> <span><p>Copies in Library:</p></span> <span class="ml-2 mr-2"><p style="font-weight:bold">@Html.DisplayFor(model => model.CopiesInLibrary),</p></span>
+                <span><p>Copies taken-out</p></span> <span class="ml-2 mr-2"><p style="font-weight:bold;">@Html.DisplayFor(model => model.CopiesOutLibrary)</p></span>
+            </div>
+            <div class="row ml-1">
+                <span class="mr-2"><p>Genre:</p></span> <span class="mr-2"><p style="font-weight:bold;">@Html.DisplayFor(model => model.Genre.Name)</p></span>
+            </div>
+            <div class="row ml-1">
+                <span class="mr-2"><p>Author:</p></span> <span class="mr-2"><p style="font-weight:bold;">@Html.DisplayFor(model => model.Author)</p></span>
+            </div>
+            <div class="row ml-1">
+                <span class="mr-2"><p>Language:</p></span> <span class="mr-2"><p style="font-weight:bold;">@Html.DisplayFor(model => model.Language)</p></span>
+            </div>
+            <div class="row ml-1">
+                <span class="mr-2"><p>Publisher:</p></span> <span class="mr-2"><p style="font-weight:bold;">@Html.DisplayFor(model => model.Publisher)</p></span>
+            </div>
+            <div class="row ml-1">
+                <span class="mr-2"><p>Published Date:</p></span> <span class="mr-2"><p style="font-weight:bold;">@Html.DisplayFor(model => model.PublishedDate)</p></span>
+            </div>
+            <div class="row ml-1">
+                <span class="mr-2"><p>Added to Library:</p></span> <span class="mr-2"><p style="font-weight:bold;">@Html.DisplayFor(model => model.LibraryAddDate)</p></span>
+            </div>
+            <div class="row ml-1">
+                <span class="mr-2"><p>ISBN:</p></span> <span class="mr-2"><p style="font-weight:bold;">@Html.DisplayFor(model => model.ISBN)</p></span>
+            </div>
+            <div class="row ml-1">
+                <span class="mr-2"><p>Pages:</p></span> <span class="mr-2"><p style="font-weight:bold;">@Html.DisplayFor(model => model.NumberOfPages)</p></span>
+            </div>
+            <div class="row ml-1">
+                <span class="mr-2"><p>Description:</p></span> <span class="mr-2">
+                    <p>
+                        @Html.DisplayFor(model => model.Description)
+                    </p>
+                </span>
+            </div>
+            <div class="row ml-1 mt-4 mb-4">
+                <span class="mr-2"><p>e - Version:</p></span> <span class="mr-2"><p class="mt-2 bg-success">@Html.DisplayFor(model => model.E_Version)</p></span> <span><button class="button-z button2">Read Now</button></span> <span><button class="button-z button3">Download</button></span>
+            </div>
+            <div class="row mt-2 ml-1">
+                <div class="author">
+                    <div class="row">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <h6 class="ml-4">4</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review">
+               
+                @* <div class="sub-review mb-4">
+                    <h5 class="mt-5">Reviews</h5>
+                    <h6>
+                        Good to read
+                    </h6>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis tempore magnam est fuga
+                        reprehenderit optio quos facilis quam iusto! Natus totam harum molestiae hic ducimus deleniti nihil
+                        accusamus laudantium delectus. <br>
+                        <span>Francis Dec 2020</span>
+                    </p>
+                </div>
+
+                <div class="sub-review mb-4">
+                    <h5 class="mt-5">Reviews</h5>
+                    <h6>
+                        Good to read
+                    </h6>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis tempore magnam est fuga
+                        reprehenderit optio quos facilis quam iusto! Natus totam harum molestiae hic ducimus deleniti nihil
+                        accusamus laudantium delectus. <br>
+                        <span>Francis Dec 2020</span>
+                    </p>
+                </div>
+
+                <div class="sub-review mb-4">
+                    <h5 class="mt-5">Reviews</h5>
+                    <h6>
+                        Good to read
+                    </h6>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis tempore magnam est fuga
+                        reprehenderit optio quos facilis quam iusto! Natus totam harum molestiae hic ducimus deleniti nihil
+                        accusamus laudantium delectus. <br>
+                        <span>Francis Dec 2020</span>
+                    </p>
+                </div> *@
+
+                <div class="text-center mt-5">
+                   
+                    <a asp-action="ReviewBook" asp-route-id="@Model.Id" class="btn btn-success ">Leave a Review</a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
